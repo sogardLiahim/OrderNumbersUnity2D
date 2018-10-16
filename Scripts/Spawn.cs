@@ -26,6 +26,11 @@ public class Spawn : MonoBehaviour
     /// <summary>
     ///   Obiectele sunt initialiazate cu un offset de 2.5f.
     ///   Apple : ObjectNumber
+   
+    ///   public class ObjectNumber : MonoBehaviour {
+
+    ///static public List<Spawn.objectCollection> sObjectCollectionsMember = new List<Spawn.objectCollection>();
+    ///  static public List<int> randomNumbersList = new List<int>();
     /// </summary>
     /// 
 
@@ -40,7 +45,7 @@ public class Spawn : MonoBehaviour
 
             for (int i = 1; i < numbersOfPrefabsDesired; i++)
             {
-                //OFFSET si instatiere
+                //OFFSET si instatiere obiect macheta pentru popularea dinamica in functie de dificultate.
 
                 spawnerLocation.position += offsetVector;
 

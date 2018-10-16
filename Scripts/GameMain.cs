@@ -40,7 +40,9 @@ public class GameMain : MonoBehaviour {
             Debug.Log(ray.origin.normalized);
 
 
-            //Functia drag se desfasoara atunci cand mouse-ul selecteaza un obiect, daca nu respecta conditia va fi activat catch.
+            //Functia drag se desfasoara atunci cand mouse-ul selecteaza un obiect prin raycast,
+            //Daca nu respecta conditia va fi activat catch drept valoare nullreference.
+            //TODO Shader Outline nu functioneaza 
 
             try
             {
@@ -51,7 +53,7 @@ public class GameMain : MonoBehaviour {
             }
             catch (System.NullReferenceException e)
             {
-                Debug.Log("No object found");
+                Debug.Log("No object found", e);
                 
             }
 
@@ -73,10 +75,8 @@ public class GameMain : MonoBehaviour {
             corutineStatus = true;
             StartCoroutine(OnHitEvent());
         }
-            //objectNumer.BroadcastMessage("OnEnable");
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             objectNumer.transform.position = mousePos;
-        //   Ray ray = Camera.main.ScreenPointToRay(mousePos);
              Vector2 objectScale = objectNumer.transform.localScale;
              LineTace(objectNumerOriginalPos,mousePos, objectScale, objectNumer);
             
@@ -104,12 +104,8 @@ public class GameMain : MonoBehaviour {
 
             GameObject affectedGameObject = hit.collider.gameObject;
             StartCoroutine(OnCollideHitEvent(orginalObjectNumerPos,numerObject, affectedGameObject)); ;
-            //Debug.Log("Swaping");
         }
 
-        //R CHEKING
-
-        //F
     }
 
     IEnumerator OnHitEvent()
